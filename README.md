@@ -18,7 +18,9 @@ sqlparse 0.3.0
 
 ## Running the server
 
-Use the following command to start the server: python manage.py runserver
+First activate the virtual environment
+
+Then use the following command to start the server: python manage.py runserver
 
 ## Create a Mobile App
 
