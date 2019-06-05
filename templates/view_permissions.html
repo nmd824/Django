@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block header %} {{ header }} {% endblock %}
+
+{% block content %}
+
+    {% for obj in permission_list %}
+        <p>Name: {{ obj.mobile_app }}</p>
+        <p>Type: {{ obj.type }}</p>
+        <p>Reason: {{ obj.reason }}</p>
+        <p>Suggested: {{ obj.get_suggested_choice }}</p>
+        <p>Suggested Reason: {{ obj.suggested_reason }}</p>
+        <hr>
+    {% endfor %}
+
+{% endblock %}

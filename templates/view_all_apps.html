@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block header %} {{ header }} {% endblock %}
+
+{% block content %}
+
+    {% for obj in mobile_app_list %}
+        <p>Name: {{ obj.name }}</p>
+        <p>Platform: {{ obj.get_platform }}</p>
+        <p>Icon: </p><img src={{ obj.icon.url }} width="200" height="200"/>
+        {% for objtype in obj.type.all %}
+            <p>Mobile App Type: {{ objtype }} </p>
+        {% endfor %}
+        <hr>
+    {% endfor %}
+
+{% endblock %}
