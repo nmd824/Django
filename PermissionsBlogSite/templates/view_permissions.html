@@ -10,6 +10,7 @@
         <p>Reason: {{ obj.reason }}</p>
         <p>Suggested: {{ obj.get_suggested_choice }}</p>
         <p>Suggested Reason: {{ obj.suggested_reason }}</p>
+        <a href="{% url 'edit_permission' obj.pk %}">Edit</a>
         <hr>
     {% endfor %}
 

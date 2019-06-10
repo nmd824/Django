@@ -62,7 +62,7 @@ def view_permission(request):
 
 
 def edit_permission(request, pk):
-    template_name = "edit_permission.html"
+    template_name = 'edit_permission.html'
     permission = get_object_or_404(AppPermissions, pk=pk)
     form = AppPermissionForm(request.POST, instance=permission)
     if form.is_valid():

@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.postgres.fields import JSONField
+from django.contrib.postgres.fields import JSONField, ArrayField
 
 
 # Create your models here.
@@ -15,23 +15,39 @@ class MobileApp(models.Model):
     name = models.CharField(max_length=200)
     icon = models.ImageField(upload_to='media/')
     platform_choices = [
-        ('i', 'ios'),
-        ('a', 'android'),
+        ('ios', 'ios'),
+        ('android', 'android'),
     ]
-    platform = models.CharField(max_length=1, choices=platform_choices)
+    platform = ArrayField(ArrayField(
+            models.CharField(max_length=7, blank=True),
+            size=2,
+        ),
+        size=2,)
     type = models.ManyToManyField(MobileAppType, related_name='mobileapps')
 
     def __str__(self):
         return self.name
 
-    # To get the name of the platform and not a single char
-    def get_platform(self):
-        return dict(MobileApp.platform_choices)[self.platform]
+
+class PermType(models.Model):
+    name = models.CharField(max_length=200)
+    platform_choices = [
+        ('ios', 'ios'),
+        ('android', 'android'),
+    ]
+    platform = ArrayField(ArrayField(
+        models.CharField(max_length=7, blank=True),
+        size=2,
+    ),
+        size=2,)
+
+    def __str__(self):
+        return self.name
 
 
 class AppPermissions(models.Model):
     mobile_app = models.ForeignKey(MobileApp, on_delete=models.CASCADE)
-    type = models.CharField(max_length=200)
+    type = models.ForeignKey(PermType, on_delete=models.CASCADE)
     reason = models.TextField()
 
     suggested_choices = [
