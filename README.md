@@ -11,8 +11,9 @@ Please see requirements.txt
 This web application uses PostgreSQL with a database called myDB with an user named "myprojectuser" and password is "password".
 
 ## Running the server
+First activate the virtual environment
 
-Start the virtual environment and use the following command to start the server: python manage.py runserver
+Then use the following command to start the server: python manage.py runserver
 
 ## Create a Mobile App
 
